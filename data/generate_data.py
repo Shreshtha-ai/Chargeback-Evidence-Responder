@@ -36,7 +36,20 @@ def generate_customers(n):
 
 def generate_orders(customers,n):
     orders = []
-    for _ in range
+    for _ in range(n):
+        cust = random.choice(customers)
+        checkout_ip = fake.ipv4()
+        orders.append({
+            "order_id": f"ORD_{uuid.uuid4().hex[:8]}",
+            "customer_id": cust["customer_id"],
+            "amount_inr": round(random.uniform(150, 25000),2),
+            "order_timestamp": random_date().isoformat(), #used to generate ISO format
+            "checkout_ip": checkout_ip,
+            "checkout_device_id" : f"DEV_{uuid.uuid4().hex[:8]}",
+            
+            
+        })
+    return orders
 
 
         
