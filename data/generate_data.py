@@ -19,6 +19,28 @@ def random_date(start_days_ago =100, end_days_ago =0): #used to generate random 
     delta_days = random.randint(end_days_ago, start_days_ago)
     return datetime.now() - timedelta(days=delta_days, hours=random.randint(0, 23))
 
+def generate_customers(n):
+    customers = []
+    for _ in range(n):
+        account_age_days = random.randint(1, 1500)
+        is_repeat_disputer = random.random() < 0.08 #8% of customers are repeat disputer 
+        customers.append({
+            "customer_id": f"CUST_{uuid.uuid4().hex[:8]}",
+            "name": fake.name(),
+            "account_age_days": account_age_days,
+            "past_orders_count": random.randint(0, 40),
+            "past_disputes_filed": random.randint(2, 6) if is_repeat_disputer else random.randint(0, 1),
+            "is_repeat_disputer": is_repeat_disputer, 
+        })
+    return customers
+
+def generate_orders(customers,n):
+    orders = []
+    for _ in range
+
+
+        
+
 
 
 
