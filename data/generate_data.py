@@ -48,19 +48,26 @@ def generate_customer_devices(customers):
     return devices
 
 
-def generate_orders(customers,n):
+def generate_orders(customers, customer_devices_by_cust, n):
     orders = []
     for _ in range(n):
         cust = random.choice(customers)
+        known_devices = customer_devices_by_cust.get(cust["customer_id"], [])
+        use_known_device = random.random() < 0.88
+        if use_known_device and known_devices:
+            device_id = random.choice(known_devices)["device_id"]
+        else:
+            device_id = f"DEV_{uuid.uuid4().hex[:10]}"  
+
         checkout_ip = fake.ipv4()
         orders.append({
             "order_id": f"ORD_{uuid.uuid4().hex[:8]}",
             "customer_id": cust["customer_id"],
-            "amount_inr": round(random.uniform(150, 25000),2),
-            "order_timestamp": random_date().isoformat(), #used to generate ISO format
-            "checkout_ip": checkout_ip,
-            "checkout_device_id" : f"DEV_{uuid.uuid4().hex[:8]}",
-            
+            "order_timestamp": random_date().isoformat(),
+            "amount_inr": round(random.uniform(299, 45000), 2),
+            "item_category": random.choice(CATEGORIES),
+            "checkout_ip": fake.ipv4(),
+            "checkout_device_id": device_id,
             
         })
     return orders
