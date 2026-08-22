@@ -126,7 +126,7 @@ def assign_dispute_labels(orders,delivery,customer,is_known_device):
  
     scores = {"fraud": score_fraud, "friendly_fraud": score_friendly, "merchant_error": score_merchant_error}
     return max(scores, key=scores.get)
-    
+
 
     CLAIM_TEXT_TEMPLATES = {
     "fraud": [
@@ -143,6 +143,23 @@ def assign_dispute_labels(orders,delivery,customer,is_known_device):
         "Tracking has not updated in over a week, where is my order?",
     ],
 }
+
+def generate_disputes(orders, deliveries_by_order, customers_by_id, known_device_ids_by_cust):
+    disputes = []
+    n_disputes = int(len(orders) * DISPUTE_RATE)
+    disputed_orders = random.sample(orders, n_disputes)
+
+    for order in disputed_orders:
+        delivery = deliveries_by_order[order["order_id"]]
+        customer = customers_by_id[order["customer_id"]]
+        known_devices = known_device_ids_by_cust.get(order["customer_id"], set())
+        is_known_device = order["checkout_device_id"] in known_devices
+        
+
+
+
+
+
 
 
     
