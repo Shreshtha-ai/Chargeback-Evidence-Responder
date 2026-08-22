@@ -93,6 +93,62 @@ def generate_deliveries(orders, fraud_order_ids):
             "delivery_photo_available": signature_captured and random.random() < 0.5,
         })
     return deliveries
+
+def assign_dispute_labels(orders,delivery,customer,is_known_device):
+
+    score_fraud = 0
+    score_friendly =0
+    score_merchant_error =0
+
+    is_established_account = customer["past_orders_count"] >= 3 and customer["account_age_days"] >= 30
+
+    if not is_known_device:
+        if is_established_account:
+            score_fraud += 2.5  # established customer + new device = genuinely unusual
+        else:
+            score_fraud += 0.3  # new customer + new device = expected, barely a signal
+    if not delivery["signature_captured"]:
+        score_fraud += 1
+        score_merchant_error += 1
+    if customer["is_repeat_disputer"]:
+        score_friendly += 2.3
+    if delivery["signature_captured"] or delivery["delivery_photo_available"]:
+        score_friendly += 1.4
+    if delivery["delivery_status"] in ("lost_in_transit", "delayed"):
+        score_merchant_error += 3
+    if customer["account_age_days"] < 20:
+        score_fraud += 1.5
+
+    #adding some random noise as data in not always perfect 
+    score_fraud += random.uniform(0, 1.2)
+    score_friendly += random.uniform(0, 1.2)
+    score_merchant_error += random.uniform(0, 1.2)
+ 
+    scores = {"fraud": score_fraud, "friendly_fraud": score_friendly, "merchant_error": score_merchant_error}
+    return max(scores, key=scores.get)
+    
+
+    CLAIM_TEXT_TEMPLATES = {
+    "fraud": [
+        "I have never made this purchase, please reverse the charge immediately.",
+        "This transaction was not authorized by me or anyone on my account.",
+    ],
+    "friendly_fraud": [
+        "I never received this item, please refund me.",
+        "This does not match what I ordered, I want my money back.",
+        "I don't recall making this purchase and would like a refund.",
+    ],
+    "merchant_error": [
+        "My order shows delivered but I never got the package.",
+        "Tracking has not updated in over a week, where is my order?",
+    ],
+}
+
+
+    
+
+
+    
         
 
 
