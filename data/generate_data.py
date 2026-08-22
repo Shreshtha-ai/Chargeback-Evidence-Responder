@@ -72,29 +72,27 @@ def generate_orders(customers, customer_devices_by_cust, n):
         })
     return orders
 
-def generate_deliveries(orders, fraud_order_ids):
+def generate_deliveries(orders):
     deliveries = []
-    for order in orders:
-        is_fraud = order["order_id"] in fraud_order_ids
-        if is_fraud:
-            status = random.choices(
-                ["delivered", "lost_in_transit", "delayed", "returned_to_sender"],
+    for o in orders:
+        status = random.choices(
+            ["delivered", "lost_in_transit", "delayed", "returned_to_sender"],
             weights=[0.80, 0.07, 0.08, 0.05],
-            )[0]
-            signature_captured = status == "delivered" and random.random() < 0.7
+        )[0]
+        signature_captured = status == "delivered" and random.random() < 0.7
         deliveries.append({
-            "order_id": order["order_id"],
+            "order_id": o["order_id"],
             "delivery_status": status,
             "delivery_timestamp": (
-                (datetime.fromisoformat(order["order_timestamp"]) + timedelta(days=random.randint(1, 7))).isoformat()
+                (datetime.fromisoformat(o["order_timestamp"]) + timedelta(days=random.randint(1, 7))).isoformat()
                 if status in ("delivered", "returned_to_sender") else ""
             ),
             "signature_captured": signature_captured,
-            "delivery_photo_available": signature_captured and random.random() < 0.5,
+            "delivery_photo_available": signature_captured and random.random() < 0.6,
         })
     return deliveries
 
-def assign_dispute_labels(orders,delivery,customer,is_known_device):
+def assign_dispute_labels(order, delivery, customer, is_known_device):
 
     score_fraud = 0
     score_friendly =0
@@ -172,6 +170,54 @@ def generate_disputes(orders, deliveries_by_order, customers_by_id, known_device
         })
 
     return disputes
+
+def write_csv(path, rows):
+    if not rows:
+        return
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=rows[0].keys())
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def main():
+    customers = generate_customers(N_CUSTOMERS)
+ 
+    customer_devices = generate_customer_devices(customers)
+    devices_by_cust = {}
+    for d in customer_devices:
+        devices_by_cust.setdefault(d["customer_id"], []).append(d)
+    known_device_ids_by_cust = {cid: set(d["device_id"] for d in devs) for cid, devs in devices_by_cust.items()}
+ 
+    orders = generate_orders(customers, devices_by_cust, N_ORDERS)
+    deliveries = generate_deliveries(orders)
+    deliveries_by_order = {d["order_id"]: d for d in deliveries}
+    customers_by_id = {c["customer_id"]: c for c in customers}
+ 
+    disputes = generate_disputes(orders, deliveries_by_order, customers_by_id, known_device_ids_by_cust)
+ 
+    write_csv("../data/customers.csv", customers)
+    write_csv("../data/customer_devices.csv", customer_devices)
+    write_csv("../data/orders.csv", orders)
+    write_csv("../data/deliveries.csv", deliveries)
+    write_csv("../data/disputes.csv", disputes)
+ 
+    label_counts = {}
+    for d in disputes:
+        label_counts[d["label"]] = label_counts.get(d["label"], 0) + 1
+ 
+    n_new_device_orders = sum(
+        1 for o in orders if o["checkout_device_id"] not in known_device_ids_by_cust.get(o["customer_id"], set())
+    )
+ 
+    print(f"Generated {len(customers)} customers, {len(customer_devices)} known devices, "
+          f"{len(orders)} orders, {len(disputes)} disputes.")
+    print(f"Orders on a brand-new (unseen) device: {n_new_device_orders} / {len(orders)}")
+    print(f"Label distribution: {label_counts}")
+ 
+ 
+if __name__ == "__main__":
+    main()
 
             
 

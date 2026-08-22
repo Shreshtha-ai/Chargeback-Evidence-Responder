@@ -1,0 +1,111 @@
+dispute_id,order_id,dispute_date,dispute_reason_code,customer_claim_text,label
+DSP_53aeb48a,ORD_3f095512,2026-08-07T07:20:09.506572,not_as_described,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_07f70ab5,ORD_e709167a,2026-08-19T14:20:09.492337,item_not_received,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_e46577aa,ORD_0aef16a8,2026-04-08T22:20:09.517274,unauthorized_transaction,"I have never made this purchase, please reverse the charge immediately.",fraud
+DSP_d836b1f2,ORD_f59437f2,2026-05-19T22:20:09.511430,not_as_described,"I never received this item, please refund me.",friendly_fraud
+DSP_a375c135,ORD_bee0a6af,2026-03-03T18:20:09.491813,item_not_received,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_799957ae,ORD_9d7c686d,2026-04-15T06:20:09.517191,item_not_received,My order shows delivered but I never got the package.,merchant_error
+DSP_15d02f78,ORD_f4741c8c,2026-08-24T20:20:09.487941,not_as_described,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_c42a48fc,ORD_56589c72,2026-03-09T19:20:09.510185,item_not_received,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_2d8071ed,ORD_fab2bd80,2026-03-27T04:20:09.516704,unauthorized_transaction,This transaction was not authorized by me or anyone on my account.,fraud
+DSP_ab9322d0,ORD_1f3374df,2026-07-13T10:20:09.491076,item_not_received,My order shows delivered but I never got the package.,merchant_error
+DSP_a760545c,ORD_a1c6ba27,2026-05-04T23:20:09.507870,unauthorized_transaction,This transaction was not authorized by me or anyone on my account.,fraud
+DSP_439975c8,ORD_d981ff5c,2026-03-06T23:20:09.497805,not_as_described,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_b28dbba5,ORD_ad473ed6,2026-08-27T20:20:09.521782,not_as_described,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_b188e96e,ORD_b85f4a35,2026-07-31T00:20:09.497483,item_not_received,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_0aa8bf8b,ORD_603e0de5,2026-04-30T23:20:09.519843,item_not_received,My order shows delivered but I never got the package.,merchant_error
+DSP_abdb50b0,ORD_e0eb3b12,2026-04-12T14:20:09.520617,item_not_received,"Tracking has not updated in over a week, where is my order?",merchant_error
+DSP_0c616285,ORD_2cca6f08,2026-06-01T10:20:09.513815,item_not_received,"Tracking has not updated in over a week, where is my order?",merchant_error
+DSP_48e16311,ORD_deb8223e,2026-07-26T21:20:09.518679,not_as_described,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_50a15164,ORD_7cf982c8,2026-07-26T15:20:09.496907,not_as_described,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_bdaea606,ORD_3ab16bdd,2026-05-30T06:20:09.495578,not_as_described,"I never received this item, please refund me.",friendly_fraud
+DSP_627b1da2,ORD_16aafde3,2026-05-05T23:20:09.525390,item_not_received,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_de1655d2,ORD_9abd0c95,2026-08-15T05:20:09.514388,not_as_described,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_c8067d3b,ORD_c1b1eb44,2026-06-23T01:20:09.513977,unauthorized_transaction,"I have never made this purchase, please reverse the charge immediately.",fraud
+DSP_fd6c47a7,ORD_c9c62cf4,2026-08-01T19:20:09.499438,not_as_described,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_c395f377,ORD_93916ec4,2026-07-22T12:20:09.488022,item_not_received,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_193555ec,ORD_9383d9e4,2026-05-25T02:20:09.507451,item_not_received,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_8349960e,ORD_f4a7aa21,2026-08-01T05:20:09.509366,item_not_received,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_fcd93d8a,ORD_fc614d63,2026-06-05T18:20:09.499024,item_not_received,"Tracking has not updated in over a week, where is my order?",merchant_error
+DSP_75c42af4,ORD_4fb3e60e,2026-05-31T01:20:09.519666,not_as_described,"I never received this item, please refund me.",friendly_fraud
+DSP_65773c52,ORD_713fb45a,2026-05-27T10:20:09.490083,item_not_received,"Tracking has not updated in over a week, where is my order?",merchant_error
+DSP_55e4d3c3,ORD_1fe4743e,2026-08-11T07:20:09.484025,unauthorized_transaction,This transaction was not authorized by me or anyone on my account.,fraud
+DSP_378b4991,ORD_305b4319,2026-04-07T05:20:09.489834,unauthorized_transaction,"I have never made this purchase, please reverse the charge immediately.",fraud
+DSP_14d22950,ORD_75e644f2,2026-05-12T20:20:09.506735,unauthorized_transaction,"I have never made this purchase, please reverse the charge immediately.",fraud
+DSP_0b4dba9b,ORD_df2f317d,2026-08-03T22:20:09.496087,item_not_received,"I never received this item, please refund me.",friendly_fraud
+DSP_ba35f7d3,ORD_aa52f6fd,2026-04-13T15:20:09.499846,item_not_received,"Tracking has not updated in over a week, where is my order?",merchant_error
+DSP_d691b6ac,ORD_5bbee6af,2026-03-19T12:20:09.517768,not_as_described,"I never received this item, please refund me.",friendly_fraud
+DSP_33cb0a23,ORD_40d58ce1,2026-04-18T02:20:09.505058,item_not_received,"I never received this item, please refund me.",friendly_fraud
+DSP_381bd6a1,ORD_62483747,2026-03-13T13:20:09.501490,not_as_described,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_60eac066,ORD_770b9716,2026-04-14T04:20:09.498536,unauthorized_transaction,"I have never made this purchase, please reverse the charge immediately.",fraud
+DSP_42ff4619,ORD_983947f8,2026-03-19T19:20:09.490912,item_not_received,My order shows delivered but I never got the package.,merchant_error
+DSP_4bd70fbf,ORD_487f8c7a,2026-04-19T23:20:09.488277,item_not_received,"Tracking has not updated in over a week, where is my order?",merchant_error
+DSP_7ecb6082,ORD_cb7901ea,2026-06-05T08:20:09.493340,not_as_described,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_23eca3f6,ORD_1075ff97,2026-06-05T22:20:09.490586,unauthorized_transaction,This transaction was not authorized by me or anyone on my account.,fraud
+DSP_042408fc,ORD_1bd0c873,2026-03-21T12:20:09.505896,item_not_received,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_b94e2d66,ORD_cf7b7b11,2026-06-10T04:20:09.493508,unauthorized_transaction,This transaction was not authorized by me or anyone on my account.,fraud
+DSP_6fcc55c2,ORD_a227caff,2026-08-05T20:20:09.520033,item_not_received,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_31acc654,ORD_fc2bf0da,2026-04-01T21:20:09.492086,item_not_received,"Tracking has not updated in over a week, where is my order?",merchant_error
+DSP_3f6dba4f,ORD_d5f3c75c,2026-05-27T03:20:09.518514,item_not_received,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_3a430ec5,ORD_a16292b2,2026-06-13T11:20:09.508539,item_not_received,"I never received this item, please refund me.",friendly_fraud
+DSP_1262617d,ORD_84ffceef,2026-05-23T03:20:09.510842,unauthorized_transaction,This transaction was not authorized by me or anyone on my account.,fraud
+DSP_a253a3d0,ORD_2f8c7111,2026-08-28T05:20:09.514059,item_not_received,"I never received this item, please refund me.",friendly_fraud
+DSP_19aa2050,ORD_65bbb235,2026-08-12T06:20:09.522499,item_not_received,My order shows delivered but I never got the package.,merchant_error
+DSP_1fd373d4,ORD_404cb324,2026-07-14T20:20:09.507069,item_not_received,"I never received this item, please refund me.",friendly_fraud
+DSP_6a099fd4,ORD_9a1b11f1,2026-07-19T07:20:09.520699,not_as_described,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_5ae3ccc1,ORD_51cb9724,2026-07-07T23:20:09.507369,unauthorized_transaction,"I have never made this purchase, please reverse the charge immediately.",fraud
+DSP_5dcf1f0c,ORD_5b025f88,2026-06-09T13:20:09.514978,unauthorized_transaction,"I have never made this purchase, please reverse the charge immediately.",fraud
+DSP_49c9cfef,ORD_486482fc,2026-04-18T01:20:09.508202,not_as_described,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_df2464b9,ORD_7658049e,2026-05-31T18:20:09.514553,unauthorized_transaction,"I have never made this purchase, please reverse the charge immediately.",fraud
+DSP_e38dc591,ORD_ae8e6962,2026-05-19T03:20:09.516864,item_not_received,My order shows delivered but I never got the package.,merchant_error
+DSP_fa6371cc,ORD_bf18e254,2026-03-22T21:20:09.518760,not_as_described,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_6b9c5d92,ORD_7e25a803,2026-08-08T20:20:09.488774,item_not_received,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_7f2ca13c,ORD_79b22943,2026-05-16T19:20:09.501736,item_not_received,"I never received this item, please refund me.",friendly_fraud
+DSP_ab549093,ORD_1473a88f,2026-04-24T17:20:09.503589,not_as_described,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_0a4a2c57,ORD_28faae3e,2026-03-26T07:20:09.487192,item_not_received,"I never received this item, please refund me.",friendly_fraud
+DSP_13809ea5,ORD_82b49e9e,2026-08-06T18:20:09.488856,not_as_described,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_5aada6d2,ORD_90a4b479,2026-03-09T00:20:09.519500,item_not_received,"Tracking has not updated in over a week, where is my order?",merchant_error
+DSP_ba7d9908,ORD_2675ada7,2026-06-10T12:20:09.489524,not_as_described,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_b4cc6b93,ORD_1a6baca2,2026-03-23T11:20:09.484199,item_not_received,"Tracking has not updated in over a week, where is my order?",merchant_error
+DSP_e0b0d3f8,ORD_2bc7f4ab,2026-04-04T14:20:09.504661,unauthorized_transaction,This transaction was not authorized by me or anyone on my account.,fraud
+DSP_b9b6a50e,ORD_4460f2f7,2026-07-22T14:20:09.498861,not_as_described,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_2384611d,ORD_9f8beeb3,2026-06-20T22:20:09.497317,not_as_described,"I never received this item, please refund me.",friendly_fraud
+DSP_62224bf9,ORD_60e08ff0,2026-07-25T23:20:09.522054,item_not_received,My order shows delivered but I never got the package.,merchant_error
+DSP_ab89f8bb,ORD_590aef1e,2026-05-02T19:20:09.524810,unauthorized_transaction,This transaction was not authorized by me or anyone on my account.,fraud
+DSP_fede8c65,ORD_87974998,2026-07-10T08:20:09.489918,item_not_received,"I never received this item, please refund me.",friendly_fraud
+DSP_6760671d,ORD_d74567fd,2026-04-25T19:20:09.519419,item_not_received,"Tracking has not updated in over a week, where is my order?",merchant_error
+DSP_ccb59854,ORD_33454742,2026-07-17T18:20:09.502826,item_not_received,"I never received this item, please refund me.",friendly_fraud
+DSP_ef9aad4b,ORD_9b2c27a1,2026-09-07T12:20:09.510103,item_not_received,My order shows delivered but I never got the package.,merchant_error
+DSP_23e88231,ORD_9292a37d,2026-06-22T06:20:09.506904,not_as_described,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_649f37f1,ORD_37bcfedc,2026-07-17T03:20:09.517110,item_not_received,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_af96de0d,ORD_275d095c,2026-07-08T02:20:09.498617,item_not_received,My order shows delivered but I never got the package.,merchant_error
+DSP_39055ea4,ORD_1d05c70b,2026-04-08T19:20:09.491321,not_as_described,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_c4b5b3c8,ORD_386f02af,2026-06-02T18:20:09.514897,item_not_received,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_8a8cc2b5,ORD_0ac1c383,2026-06-13T13:20:09.496988,item_not_received,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_b3bb0606,ORD_cd28ed87,2026-07-31T06:20:09.484714,unauthorized_transaction,This transaction was not authorized by me or anyone on my account.,fraud
+DSP_8d020cd7,ORD_20f4e3f4,2026-05-31T12:20:09.516380,not_as_described,"I never received this item, please refund me.",friendly_fraud
+DSP_e35a3c1e,ORD_57077bed,2026-07-31T22:20:09.488938,item_not_received,My order shows delivered but I never got the package.,merchant_error
+DSP_600fc619,ORD_20e0278b,2026-05-06T08:20:09.522615,item_not_received,My order shows delivered but I never got the package.,merchant_error
+DSP_a27bd5e0,ORD_8b147e75,2026-05-20T19:20:09.489360,item_not_received,"Tracking has not updated in over a week, where is my order?",merchant_error
+DSP_e8a6d4f8,ORD_d1efca68,2026-07-09T09:20:09.514223,item_not_received,"I never received this item, please refund me.",friendly_fraud
+DSP_8cad6453,ORD_9cb9a08f,2026-03-07T07:20:09.490002,item_not_received,"Tracking has not updated in over a week, where is my order?",merchant_error
+DSP_cbe8ed4f,ORD_e1576359,2026-03-08T16:20:09.524892,not_as_described,"I never received this item, please refund me.",friendly_fraud
+DSP_9e56a08a,ORD_e163a1d2,2026-06-12T05:20:09.493756,not_as_described,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_2b552b93,ORD_4c1cb54a,2026-04-11T07:20:09.497155,not_as_described,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_e0142af9,ORD_1b616c5d,2026-04-27T20:20:09.489277,not_as_described,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_b31c32d1,ORD_b81c0ed2,2026-06-17T04:20:09.493003,item_not_received,"I never received this item, please refund me.",friendly_fraud
+DSP_9ed9f421,ORD_c9cef943,2026-06-23T08:20:09.489442,item_not_received,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_b0d92f4d,ORD_3a5e49a9,2026-04-24T23:20:09.487276,item_not_received,"Tracking has not updated in over a week, where is my order?",merchant_error
+DSP_c989ee21,ORD_f1a55e03,2026-03-10T11:20:09.502065,item_not_received,"I never received this item, please refund me.",friendly_fraud
+DSP_548ab1f2,ORD_a8ed6ba7,2026-07-15T04:20:09.520280,unauthorized_transaction,This transaction was not authorized by me or anyone on my account.,fraud
+DSP_67bc0c7b,ORD_499375d5,2026-08-26T14:20:09.524369,item_not_received,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_76a6ec9d,ORD_bcac2c1b,2026-06-09T00:20:09.488692,not_as_described,"I never received this item, please refund me.",friendly_fraud
+DSP_aea0b3de,ORD_e00aef25,2026-05-18T10:20:09.520947,item_not_received,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_906c3d63,ORD_9e60dad4,2026-08-24T22:20:09.484285,item_not_received,"I never received this item, please refund me.",friendly_fraud
+DSP_f9762c4c,ORD_dab5ef50,2026-08-22T13:20:09.517606,item_not_received,My order shows delivered but I never got the package.,merchant_error
+DSP_e2e839f3,ORD_655450fa,2026-08-08T22:20:09.504968,item_not_received,My order shows delivered but I never got the package.,merchant_error
+DSP_06dfd055,ORD_c08f5e5e,2026-05-29T22:20:09.521356,not_as_described,I don't recall making this purchase and would like a refund.,friendly_fraud
+DSP_f52f5529,ORD_1d56cd62,2026-08-24T06:20:09.502324,unauthorized_transaction,"I have never made this purchase, please reverse the charge immediately.",fraud
+DSP_d2fec7d8,ORD_100756a1,2026-05-04T21:20:09.485294,item_not_received,My order shows delivered but I never got the package.,merchant_error
+DSP_31bc20c5,ORD_d89bf63c,2026-04-09T06:20:09.492418,item_not_received,"This does not match what I ordered, I want my money back.",friendly_fraud
+DSP_2eab46d8,ORD_a273ab93,2026-04-26T10:20:09.488530,not_as_described,I don't recall making this purchase and would like a refund.,friendly_fraud
