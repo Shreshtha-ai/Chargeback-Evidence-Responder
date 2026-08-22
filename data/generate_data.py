@@ -68,7 +68,7 @@ def generate_orders(customers, customer_devices_by_cust, n):
             "item_category": random.choice(CATEGORIES),
             "checkout_ip": fake.ipv4(),
             "checkout_device_id": device_id,
-            
+
         })
     return orders
 
@@ -78,13 +78,21 @@ def generate_deliveries(orders, fraud_order_ids):
         is_fraud = order["order_id"] in fraud_order_ids
         if is_fraud:
             status = random.choices(
-                ["delivered", "intercepted", "returned_to_sender"],
-                weights=[0.5, 0.3, 0.2],
+                ["delivered", "lost_in_transit", "delayed", "returned_to_sender"],
+            weights=[0.80, 0.07, 0.08, 0.05],
             )[0]
-
-            device_ip_match = random.random() < 0.15  # rarely matches
-            signature_captured = random.random() < 0.3
-
+            signature_captured = status == "delivered" and random.random() < 0.7
+        deliveries.append({
+            "order_id": order["order_id"],
+            "delivery_status": status,
+            "delivery_timestamp": (
+                (datetime.fromisoformat(order["order_timestamp"]) + timedelta(days=random.randint(1, 7))).isoformat()
+                if status in ("delivered", "returned_to_sender") else ""
+            ),
+            "signature_captured": signature_captured,
+            "delivery_photo_available": signature_captured and random.random() < 0.5,
+        })
+    return deliveries
         
 
 
