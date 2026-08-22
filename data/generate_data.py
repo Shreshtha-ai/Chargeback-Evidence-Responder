@@ -128,8 +128,7 @@ def assign_dispute_labels(orders,delivery,customer,is_known_device):
     return max(scores, key=scores.get)
 
 
-    CLAIM_TEXT_TEMPLATES = {
-    "fraud": [
+CLAIM_TEXT_TEMPLATES = {"fraud": [
         "I have never made this purchase, please reverse the charge immediately.",
         "This transaction was not authorized by me or anyone on my account.",
     ],
@@ -154,7 +153,31 @@ def generate_disputes(orders, deliveries_by_order, customers_by_id, known_device
         customer = customers_by_id[order["customer_id"]]
         known_devices = known_device_ids_by_cust.get(order["customer_id"], set())
         is_known_device = order["checkout_device_id"] in known_devices
-        
+
+        label = assign_dispute_labels(order,delivery,customer,is_known_device)
+
+        reason = {
+            "fraud": "unauthorized_transaction",
+            "friendly_fraud": random.choice(["item_not_received", "not_as_described"]),
+            "merchant_error": "item_not_received",
+        }[label]
+
+        disputes.append({
+            "dispute_id": f"DSP_{uuid.uuid4().hex[:8]}",
+            "order_id": order["order_id"],
+            "dispute_date": (datetime.fromisoformat(order["order_timestamp"]) + timedelta(days=random.randint(3, 25))).isoformat(),
+            "dispute_reason_code": reason,
+            "customer_claim_text": random.choice(CLAIM_TEXT_TEMPLATES[label]),
+            "label": label,
+        })
+
+    return disputes
+
+            
+
+            
+
+
 
 
 
