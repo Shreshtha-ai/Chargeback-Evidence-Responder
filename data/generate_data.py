@@ -15,7 +15,7 @@ DISPUTE_RATE = 0.22
 CATEGORIES = ["Electronics", "Fashion", "Home & Kitchen", "Beauty", "Food", "Books", "Sports"] #product category
 DISPUTE_REASONS = ["items_not_received", "unauthorized_transaction", "not_as_described", "duplicate_charge"]
 
-def random_date(start_days_ago =100, end_days_ago =0): #used to generate random  transaction/order timestamps 
+def random_date(start_days_ago =180, end_days_ago =1): #used to generate random  transaction/order timestamps 
     delta_days = random.randint(end_days_ago, start_days_ago)
     return datetime.now() - timedelta(days=delta_days, hours=random.randint(0, 23))
 
@@ -34,6 +34,20 @@ def generate_customers(n):
         })
     return customers
 
+def generate_customer_devices(customers):
+    devices = []
+    for c in customers:
+        n_devices = random.choices([1,2,3], weights=[0.55,0.35,0.10])[0]
+        for _ in range(n_devices):
+            devices.append({
+                "customer_id": c["customer_id"],
+                "device_id": f"DEV_{uuid.uuid4().hex[:10]}",
+                "first_seen_date": random_date(start_days_ago=c["account_age_days"] if c["account_age_days"] > 0 else 1).isoformat(),
+                "times_used": random.randint(1, 25),
+            })
+    return devices
+
+
 def generate_orders(customers,n):
     orders = []
     for _ in range(n):
@@ -50,6 +64,23 @@ def generate_orders(customers,n):
             
         })
     return orders
+
+def generate_deliveries(orders, fraud_order_ids):
+    deliveries = []
+    for order in orders:
+        is_fraud = order["order_id"] in fraud_order_ids
+        if is_fraud:
+            status = random.choices(
+                ["delivered", "intercepted", "returned_to_sender"],
+                weights=[0.5, 0.3, 0.2],
+            )[0]
+
+            device_ip_match = random.random() < 0.15  # rarely matches
+            signature_captured = random.random() < 0.3
+
+        
+
+
 
 
         
