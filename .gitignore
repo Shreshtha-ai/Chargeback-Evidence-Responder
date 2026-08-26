@@ -1,1 +1,19 @@
+
 .env
+ 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+venv/
+env/
+ 
+# Regenerable artifacts -- don't bloat the repo, these are created by running the code
+src/classifier_model.joblib
+*.joblib
+ 
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/settings.json
