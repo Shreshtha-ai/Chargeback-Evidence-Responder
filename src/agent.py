@@ -1,29 +1,3 @@
-"""
-agent.py (Groq version)
-
-Same agent design as before -- a tool-calling loop that investigates a
-dispute by calling tools.py functions one at a time -- now running on
-Groq's free API instead of Gemini's, since Groq's free tier is
-significantly more generous (roughly 1,000+ requests/day vs. the 20/day
-we hit on Gemini's newer preview model) and uses the well-established
-OpenAI-style tool-calling format.
-
-Nothing about the AGENT DESIGN changes: same 5 investigation tools + the
-classifier tool, same "classifier is one input, not the answer"
-principle, same audit trail, same JSON decision output. Only the API
-client/plumbing is different.
-
-Setup:
-    pip install groq python-dotenv
-    Get a free API key at https://console.groq.com (no credit card)
-    Put it in a .env file in your project root:
-        GROQ_API_KEY=your_key_here
-
-Model:
-    Using llama-3.3-70b-versatile -- a solid, well-supported free-tier
-    model for tool-calling tasks. Check console.groq.com/docs/models for
-    the current model list if this one is ever deprecated/renamed.
-"""
 
 import json
 import os
@@ -33,6 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()  # must run before creating the client, so GROQ_API_KEY is available
 
 from groq import Groq
+from groq import BadRequestError
 
 import tools
 from classifier import predict_fraud_likelihood
@@ -178,7 +153,8 @@ decision must be justified from the actual evidence you gathered, in
 plain language a non-technical merchant could follow.
 
 When you have enough evidence, respond with your final answer as JSON
-(and nothing else) in this exact shape:
+(and nothing else) in this exact shape. Do NOT call a tool to produce
+this answer -- just write the JSON directly as your plain text response:
 {
   "predicted_category": "fraud" | "friendly_fraud" | "merchant_error",
   "confidence": <float 0-1>,
@@ -216,12 +192,33 @@ def investigate_dispute(dispute_id: str, verbose: bool = True) -> dict:
 
     max_turns = 10  # safety cap so a confused model can't loop forever
     for _ in range(max_turns):
-        response = client.chat.completions.create(
-            model=MODEL,
-            messages=messages,
-            tools=TOOL_SCHEMAS,
-            tool_choice="auto",
-        )
+        try:
+            response = client.chat.completions.create(
+                model=MODEL,
+                messages=messages,
+                tools=TOOL_SCHEMAS,
+                tool_choice="auto",
+            )
+        except BadRequestError as e:
+            # Known GPT-OSS quirk on Groq: the model sometimes tries to call a
+            # fake "json" tool to structure its final answer instead of just
+            # writing plain text. Groq rejects the request, but the intended
+            # answer is still recoverable from the error body's
+            # "failed_generation" field -- so we extract it instead of crashing.
+            body = getattr(e, "body", None) or {}
+            failed_generation = body.get("error", {}).get("failed_generation")
+            if failed_generation:
+                try:
+                    parsed = json.loads(failed_generation)
+                    decision = parsed.get("arguments", parsed)
+                    if verbose:
+                        print("\n=== Recovered final answer from a rejected tool call ===")
+                        print(json.dumps(decision, indent=2))
+                    log_audit_entry(dispute_id, tool_call_log, decision)
+                    return decision
+                except json.JSONDecodeError:
+                    pass
+            raise
         message = response.choices[0].message
 
         if not message.tool_calls:
