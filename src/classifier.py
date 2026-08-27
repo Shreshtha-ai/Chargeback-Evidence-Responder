@@ -34,8 +34,11 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 import joblib
+from pathlib import Path
 
-DATA_DIR = "../data"
+_SRC_DIR = Path(__file__).parent
+DATA_DIR = str(_SRC_DIR.parent / "data")
+_MODEL_PATH = _SRC_DIR / "classifier_model.joblib"
 
 
 def build_feature_table():
@@ -103,8 +106,8 @@ def train_and_evaluate():
     print("=== Classifier eval on held-out test set ===")
     print(classification_report(y_test, preds, zero_division=0))
 
-    joblib.dump(model, "classifier_model.joblib")
-    print("Model saved to classifier_model.joblib")
+    joblib.dump(model, _MODEL_PATH)
+    print(f"Model saved to {_MODEL_PATH}")
     return model
 
 
@@ -126,7 +129,7 @@ def predict_fraud_likelihood(
     probabilities. This is what the agent calls -- it does NOT read CSVs
     or know about dispute_ids, it just scores whatever features it's given.
     """
-    model = joblib.load("classifier_model.joblib")
+    model = joblib.load(_MODEL_PATH)
     features = {
         "is_known_device": is_known_device,
         "is_established_account": is_established_account,
