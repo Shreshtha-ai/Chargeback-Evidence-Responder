@@ -1,53 +1,22 @@
-"""
-classifier.py
 
-A lightweight structured-feature classifier that predicts a probability
-distribution over {fraud, friendly_fraud, merchant_error} for a dispute.
 
-IMPORTANT: this is deliberately ONE TOOL the agent can call, not the
-system's final answer. The agent still has to gather evidence, reason
-about it, and justify a decision -- the classifier just gives it a
-quick, structured prior to reason with (the same way a real fraud
-analyst might glance at a risk score before reading the case details,
-not accept the score blindly as the verdict).
-
-Features used (all derived from tools.py, no ground-truth leakage):
-    - is_known_device        (from check_device_familiarity)
-    - is_established_account (derived: past_orders_count >= 3 and account_age_days >= 30)
-    - account_age_days
-    - past_orders_count
-    - past_disputes_filed
-    - signature_captured
-    - delivery_photo_available
-    - delivery_status_bad     (lost_in_transit or delayed)
-    - amount_inr
-
-Deliberately excluded: is_repeat_disputer, dispute label -- ground truth,
-never a feature.
-
-Train/test split is fixed (seed=42, 80/20) so results are reproducible --
-this is the number you'll report in eval/eval_results.json later.
-"""
-
+import os
 import pandas as pd
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 import joblib
-from pathlib import Path
 
-_SRC_DIR = Path(__file__).parent
-DATA_DIR = str(_SRC_DIR.parent / "data")
-_MODEL_PATH = _SRC_DIR / "classifier_model.joblib"
+# Resolved relative to THIS FILE's location, not the caller's cwd -- same
+# reasoning as tools.py: this module gets imported from src/ (via agent.py)
+# AND from eval/run_eval.py, which live in different directories.
+_THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(_THIS_DIR, "..", "data")
+MODEL_PATH = os.path.join(_THIS_DIR, "classifier_model.joblib")
 
 
 def build_feature_table():
-    """
-    Joins the raw CSVs into one feature table, one row per dispute.
-    This mirrors exactly what the agent's tools would return if called
-    for that dispute -- kept as a single function so it's obvious the
-    classifier sees nothing the agent's tools couldn't also retrieve.
-    """
+    
     customers = pd.read_csv(f"{DATA_DIR}/customers.csv")
     devices = pd.read_csv(f"{DATA_DIR}/customer_devices.csv")
     orders = pd.read_csv(f"{DATA_DIR}/orders.csv")
@@ -106,8 +75,8 @@ def train_and_evaluate():
     print("=== Classifier eval on held-out test set ===")
     print(classification_report(y_test, preds, zero_division=0))
 
-    joblib.dump(model, _MODEL_PATH)
-    print(f"Model saved to {_MODEL_PATH}")
+    joblib.dump(model, MODEL_PATH)
+    print(f"Model saved to {MODEL_PATH}")
     return model
 
 
@@ -122,14 +91,8 @@ def predict_fraud_likelihood(
     delivery_status_bad: int,
     amount_inr: float,
 ) -> dict:
-    """
-    Tool function: takes the 9 feature values as separate keyword
-    arguments (matching the FUNCTION_DECLARATIONS schema in agent.py,
-    which lists each as its own parameter) and returns class
-    probabilities. This is what the agent calls -- it does NOT read CSVs
-    or know about dispute_ids, it just scores whatever features it's given.
-    """
-    model = joblib.load(_MODEL_PATH)
+    
+    model = joblib.load(MODEL_PATH)
     features = {
         "is_known_device": is_known_device,
         "is_established_account": is_established_account,

@@ -1,0 +1,222 @@
+[
+  {
+    "dispute_id": "DSP_042408fc",
+    "true_label": "friendly_fraud",
+    "amount_inr": 29552.88,
+    "predicted_category": "friendly_fraud",
+    "confidence": 0.92,
+    "gated_action": "fight_dispute",
+    "requires_human_review": false,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_aea0b3de",
+    "true_label": "friendly_fraud",
+    "amount_inr": 9063.22,
+    "predicted_category": "friendly_fraud",
+    "confidence": 0.92,
+    "gated_action": "fight_dispute",
+    "requires_human_review": false,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_14d22950",
+    "true_label": "fraud",
+    "amount_inr": 6083.58,
+    "predicted_category": "fraud",
+    "confidence": 0.68,
+    "gated_action": "fight_dispute",
+    "requires_human_review": true,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_bdaea606",
+    "true_label": "friendly_fraud",
+    "amount_inr": 13105.29,
+    "predicted_category": null,
+    "confidence": null,
+    "gated_action": null,
+    "requires_human_review": null,
+    "error": "Incomplete model output (missing required fields): {'customer_id': 'CUST_b7e27049'}"
+  },
+  {
+    "dispute_id": "DSP_62224bf9",
+    "true_label": "merchant_error",
+    "amount_inr": 10787.07,
+    "predicted_category": "fraud",
+    "confidence": 0.78,
+    "gated_action": "concede",
+    "requires_human_review": false,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_23e88231",
+    "true_label": "friendly_fraud",
+    "amount_inr": 8817.97,
+    "predicted_category": "friendly_fraud",
+    "confidence": 0.87,
+    "gated_action": "fight_dispute",
+    "requires_human_review": false,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_d691b6ac",
+    "true_label": "friendly_fraud",
+    "amount_inr": 18574.78,
+    "predicted_category": "friendly_fraud",
+    "confidence": 0.92,
+    "gated_action": "fight_dispute",
+    "requires_human_review": false,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_8d020cd7",
+    "true_label": "friendly_fraud",
+    "amount_inr": 32495.15,
+    "predicted_category": null,
+    "confidence": null,
+    "gated_action": null,
+    "requires_human_review": null,
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kfgahfprfeyatx99zh0ma01h` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6412, Requested 1609. Please try again in 157.5ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  },
+  {
+    "dispute_id": "DSP_ef9aad4b",
+    "true_label": "merchant_error",
+    "amount_inr": 16174.07,
+    "predicted_category": null,
+    "confidence": null,
+    "gated_action": null,
+    "requires_human_review": null,
+    "error": "Incomplete model output (missing required fields): {'customer_id': 'CUST_b29b64a1'}"
+  },
+  {
+    "dispute_id": "DSP_3f6dba4f",
+    "true_label": "friendly_fraud",
+    "amount_inr": 29630.69,
+    "predicted_category": "friendly_fraud",
+    "confidence": 0.95,
+    "gated_action": "fight_dispute",
+    "requires_human_review": false,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_fede8c65",
+    "true_label": "friendly_fraud",
+    "amount_inr": 35956.34,
+    "predicted_category": null,
+    "confidence": null,
+    "gated_action": null,
+    "requires_human_review": null,
+    "error": "Incomplete model output (missing required fields): {'customer_id': 'CUST_175320cb'}"
+  },
+  {
+    "dispute_id": "DSP_67bc0c7b",
+    "true_label": "friendly_fraud",
+    "amount_inr": 34971.46,
+    "predicted_category": null,
+    "confidence": null,
+    "gated_action": null,
+    "requires_human_review": null,
+    "error": "Incomplete model output (missing required fields): {'customer_id': 'CUST_e0f3d9be'}"
+  },
+  {
+    "dispute_id": "DSP_fa6371cc",
+    "true_label": "friendly_fraud",
+    "amount_inr": 16379.74,
+    "predicted_category": "friendly_fraud",
+    "confidence": 0.78,
+    "gated_action": "fight_dispute",
+    "requires_human_review": false,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_600fc619",
+    "true_label": "merchant_error",
+    "amount_inr": 43881.65,
+    "predicted_category": "fraud",
+    "confidence": 0.94,
+    "gated_action": "concede",
+    "requires_human_review": false,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_60eac066",
+    "true_label": "fraud",
+    "amount_inr": 11868.54,
+    "predicted_category": "merchant_error",
+    "confidence": 0.78,
+    "gated_action": "fight_dispute",
+    "requires_human_review": false,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_33cb0a23",
+    "true_label": "friendly_fraud",
+    "amount_inr": 26841.23,
+    "predicted_category": "friendly_fraud",
+    "confidence": 0.92,
+    "gated_action": "fight_dispute",
+    "requires_human_review": false,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_b4cc6b93",
+    "true_label": "merchant_error",
+    "amount_inr": 5602.02,
+    "predicted_category": "fraud",
+    "confidence": 0.88,
+    "gated_action": "fight_dispute",
+    "requires_human_review": false,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_e38dc591",
+    "true_label": "merchant_error",
+    "amount_inr": 6678.38,
+    "predicted_category": "fraud",
+    "confidence": 0.78,
+    "gated_action": "fight_dispute",
+    "requires_human_review": false,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_3a430ec5",
+    "true_label": "friendly_fraud",
+    "amount_inr": 40285.28,
+    "predicted_category": "friendly_fraud",
+    "confidence": 0.97,
+    "gated_action": "fight_dispute",
+    "requires_human_review": false,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_07f70ab5",
+    "true_label": "friendly_fraud",
+    "amount_inr": 10349.73,
+    "predicted_category": "friendly_fraud",
+    "confidence": 0.93,
+    "gated_action": "fight_dispute",
+    "requires_human_review": false,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_e0b0d3f8",
+    "true_label": "fraud",
+    "amount_inr": 19243.59,
+    "predicted_category": "friendly_fraud",
+    "confidence": 0.85,
+    "gated_action": "fight_dispute",
+    "requires_human_review": false,
+    "error": null
+  },
+  {
+    "dispute_id": "DSP_1262617d",
+    "true_label": "fraud",
+    "amount_inr": 41241.1,
+    "predicted_category": "fraud",
+    "confidence": 0.85,
+    "gated_action": "fight_dispute",
+    "requires_human_review": false,
+    "error": null
+  }
+]
