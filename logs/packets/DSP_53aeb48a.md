@@ -1,18 +1,18 @@
 # Chargeback Evidence Packet
  
 **Dispute ID:** DSP_53aeb48a
-**Generated:** 2026-08-29T19:19:52.598886
+**Generated:** 2026-08-31T12:46:34.458602
 
 ## Decision Summary
  
 - **Predicted category:** friendly_fraud
-- **Model confidence:** 0.92
+- **Model confidence:** 0.85
 - **System action:** fight_dispute (auto-approved, no review needed)
-- **Gating rationale:** Confidence 0.92 >= 0.75 -- proceeding automatically with the agent's recommendation.
+- **Gating rationale:** Confidence 0.85 >= 0.75 -- proceeding automatically with the agent's recommendation.
  
 ## Reasoning
  
-The customer has an established account (over 3 years old) and used a known device for the purchase. Delivery proof shows the order was delivered, a signature was captured, and a delivery photo is available, contradicting the claim that the item does not match the order. No prior disputes exist, suggesting this is an isolated claim likely intended to obtain a refund, so the merchant should contest the dispute.
+The purchase was made on a known device that the customer has used multiple times, and the account is over three years old with no prior disputes. Delivery evidence shows the order was signed for and a delivery photo exists, indicating the item was received as shipped. The claim of "not as described" is vague and there is no contradictory evidence, making a fraudulent chargeback more likely than a genuine merchant error.
  
 ## Supporting Evidence
  

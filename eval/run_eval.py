@@ -1,23 +1,3 @@
-"""
-run_eval.py
-
-Runs the full agent pipeline (investigate -> confidence gate) across a
-HELD-OUT test set of disputes -- the same disputes the classifier never
-trained on -- and saves the raw per-dispute results to eval_results.json.
-
-Uses the EXACT SAME 80/20 stratified split as classifier.py (identical
-seed=42), so the classifier's reported metrics and the agent's reported
-metrics are directly comparable: both evaluated on the identical unseen
-disputes, not two different test sets that happen to look similar.
-
-Why this is a separate script from metrics.py:
--------------------------------------------------
-Running the agent costs real API calls (time + free-tier quota). You
-don't want to burn that quota every time you tweak how a metric is
-calculated. This script runs the agent ONCE and saves raw results;
-metrics.py then computes precision/recall/cost analysis from the saved
-file as many times as you want, for free, without re-calling the API.
-"""
 
 import json
 import time
@@ -37,11 +17,7 @@ SLEEP_BETWEEN_CALLS = 2  # seconds -- be polite to the free-tier API, avoid rate
 
 
 def get_test_dispute_ids():
-    """
-    Reproduces the EXACT same 80/20 stratified split classifier.py uses
-    (same seed, same stratify column), so the agent is evaluated on the
-    identical held-out disputes as the classifier -- apples to apples.
-    """
+    
     df = build_feature_table()
     X = df[FEATURE_COLS]
     y = df["label"]
@@ -49,16 +25,8 @@ def get_test_dispute_ids():
     return df.loc[X_test.index, "dispute_id"].tolist()
 
 
-def _investigate_with_retry(dispute_id: str, max_attempts: int = 2) -> dict:
-    """
-    Runs investigate_dispute() and validates the result actually has the
-    fields we need. A model call can "succeed" (no exception) but still
-    return incomplete JSON -- e.g. missing predicted_category -- which is
-    a real failure for eval purposes even though nothing crashed. This
-    wrapper catches BOTH crash-failures and silent incomplete-output
-    failures, and retries once before giving up, since a single flaky
-    generation shouldn't cost you an entire test case.
-    """
+def _investigate_with_retry(dispute_id: str, max_attempts: int = 3) -> dict:
+   
     last_error = None
     for attempt in range(1, max_attempts + 1):
         try:
@@ -81,11 +49,7 @@ def _investigate_with_retry(dispute_id: str, max_attempts: int = 2) -> dict:
 
 
 def run_eval(limit: int = None):
-    """
-    Runs the agent on each held-out test dispute. `limit` lets you run a
-    quick partial eval (e.g. limit=5) to sanity-check everything works
-    before committing your full free-tier quota to a complete run.
-    """
+    
     test_ids = get_test_dispute_ids()
     if limit:
         test_ids = test_ids[:limit]

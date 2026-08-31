@@ -1,40 +1,40 @@
 {
   "classification_metrics": {
     "total_disputes": 22,
-    "completed": 17,
-    "errored": 5,
-    "error_rate": 0.227,
+    "completed": 21,
+    "errored": 1,
+    "error_rate": 0.045,
     "classification_report": {
       "fraud": {
-        "precision": 0.3333333333333333,
-        "recall": 0.5,
-        "f1-score": 0.4,
+        "precision": 0.6,
+        "recall": 0.75,
+        "f1-score": 0.6666666666666666,
         "support": 4.0
       },
       "friendly_fraud": {
-        "precision": 0.9,
+        "precision": 0.8666666666666667,
         "recall": 1.0,
-        "f1-score": 0.9473684210526315,
-        "support": 9.0
+        "f1-score": 0.9285714285714286,
+        "support": 13.0
       },
       "merchant_error": {
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1-score": 0.0,
+        "precision": 1.0,
+        "recall": 0.25,
+        "f1-score": 0.4,
         "support": 4.0
       },
-      "accuracy": 0.6470588235294118,
+      "accuracy": 0.8095238095238095,
       "macro avg": {
-        "precision": 0.41111111111111115,
-        "recall": 0.5,
-        "f1-score": 0.44912280701754387,
-        "support": 17.0
+        "precision": 0.8222222222222223,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.665079365079365,
+        "support": 21.0
       },
       "weighted avg": {
-        "precision": 0.5549019607843138,
-        "recall": 0.6470588235294118,
-        "f1-score": 0.5956656346749225,
-        "support": 17.0
+        "precision": 0.8412698412698413,
+        "recall": 0.8095238095238095,
+        "f1-score": 0.7780045351473923,
+        "support": 21.0
       }
     },
     "confusion_matrix": {
@@ -45,40 +45,36 @@
       ],
       "matrix": [
         [
+          3,
+          1,
+          0
+        ],
+        [
+          0,
+          13,
+          0
+        ],
+        [
           2,
           1,
           1
-        ],
-        [
-          0,
-          9,
-          0
-        ],
-        [
-          4,
-          0,
-          0
         ]
       ]
     },
     "errored_dispute_ids": [
-      "DSP_bdaea606",
-      "DSP_8d020cd7",
-      "DSP_ef9aad4b",
-      "DSP_fede8c65",
-      "DSP_67bc0c7b"
+      "DSP_e38dc591"
     ]
   },
   "cost_analysis": {
     "outcome_counts": {
-      "correct_fight": 13,
-      "correct_concede": 2,
-      "wasted_fight": 2,
+      "correct_fight": 17,
+      "correct_concede": 1,
+      "wasted_fight": 3,
       "missed_recovery": 0,
       "deferred": 0
     },
-    "wasted_fight_amount_inr": 12280.4,
+    "wasted_fight_amount_inr": 60270.74,
     "missed_recovery_amount_inr": 0.0,
-    "net_avoidable_cost_inr": 12280.4
+    "net_avoidable_cost_inr": 60270.74
   }
 }
