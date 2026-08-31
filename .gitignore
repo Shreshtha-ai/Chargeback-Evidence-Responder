@@ -9,7 +9,6 @@ __pycache__/
 venv/
 env/
  
-# Regenerable artifacts -- don't bloat the repo, these are created by running the code
 src/classifier_model.joblib
 *.joblib
  
